@@ -1,0 +1,886 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+      <link href="http://www.donotloveme.com/wp-content/uploads/2015/12/qrcode_for_gh_621b88bb51d8_430.jpg" rel="shortcut icon" type="image/vnd.microsoft.icon">
+      <title>‘国家鉴表中心’</title>
+      <meta charset="utf-8">
+      <script src="1.js"></script>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+ <meta name="viewport" content="width=device-width,minimum-scale=0.5,maximum-scale=1,initial-scale=0.8" />
+ <!--<meta name="viewport" content="target-densitydpi=320,width=640,user-scalable=no">-->
+      <script type="text/javascript">
+        $(document).ready(function(){
+          var result=0;
+          var result_message;
+          var a = 0;
+          var b = 0;
+          var c = 0;
+          var d = 0;
+          var res_arr = [];          
+
+          $(".options ul li").click(function(){
+              var  node = $(this).parent().parent().parent();
+              var next_node = $(node).next();
+
+                          var dataScore = $(this).attr("data-score");
+
+            $(node).hide();
+
+            if(parseInt(dataScore) > 100){
+                $(".result-"+dataScore).show();
+                if ( is_weixin() ) {
+                   $("#share2").hide();      
+                }else{       
+                   $("#share1").hide();  
+                 }
+            }else{
+                $(".question-"+dataScore).show();
+            }
+          });
+
+          $(".prev a").click(function(){
+              var node = $(this).parent().parent();
+              var prev_node = $(node).prev();
+
+              if(prev_node.hasClass("question")){
+                  $(node).hide();
+                  $(prev_node).show();
+              }
+          });
+      });
+      </script>
+      <script type="text/javascript">
+        
+        var is_weixin = function () {
+                var ua = navigator.userAgent.toLowerCase();
+                if(ua.match(/MicroMessenger/i) == "micromessenger") {
+                    if(ua.match(/iphone/i) == "iphone") {
+                        return 'ios';
+                    }
+                    return 'android';
+                }
+                return false;
+            }
+   
+            var foo = function (o) {
+                if (o.value == o.defaultValue) {
+                    o.value = '';
+                    o.style.color = '#000';
+                }
+            }
+
+            var bar = function (o) {
+                if (o.value == '') {
+                    o.value = o.defaultValue;
+                    o.style.color = '#9a9a9a';
+                } else {
+                    o.style.color = '#000';
+                }
+            }
+
+            var mask = function () {
+                if (document.getElementById('mask').style.display == 'inline') {
+                    document.getElementById('mask').style.display = 'none';
+                    document.getElementById('tip').style.display = 'none';
+                } else {
+                    document.getElementById('mask').style.display = 'inline';
+                    document.getElementById('tip').style.display = 'inline';
+                }
+            }
+
+            var share = function () {
+                mask();
+            }
+
+
+
+        var share_callback_hy = function () {
+            ajax = new XMLHttpRequest();
+            ajax.open('GET', '/materials/wx_share?f=wx_hy&ref=' + window.location.href, true);
+            ajax.send(null);
+        }
+
+        var share_callback_pyq = function () {
+            ajax = new XMLHttpRequest();
+            ajax.open('GET', '/materials/wx_share?f=wx_pyq&ref=' + window.location.href, true);
+            ajax.send(null);
+        }
+
+
+        var dataForWeixin = {
+              appId: "wx1ff6293a62df40ef",
+              TLImg: "http://www.donotloveme.com/wp-content/uploads/2015/12/qrcode_for_gh_621b88bb51d8_430.jpg",
+              url: "http://www.donotloveme.com/little/index.html",
+              title: "国家鉴表中心",
+              desc: "‘国家鉴表中心’荣誉出品"
+        };
+
+
+
+        var onBridgeReady = function(){
+            WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                WeixinJSBridge.invoke('sendAppMessage', {
+                    "appid": dataForWeixin.appId,
+                    "img_url": dataForWeixin.TLImg,
+                    "img_width": "300",
+                    "img_height": "300",
+                    "link": dataForWeixin.url + '?f=wx_hy_bb',
+                    "title":  dataForWeixin.title,
+                    "desc": dataForWeixin.desc 
+                });
+                share_callback_hy();
+                setTimeout(function () {location.href = "http://mp.weixin.qq.com/s?__biz=MzIzNjE0MjQzNg==&mid=402606688&idx=1&sn=cce9047a66682d9b8c07ac22644e4f3a&scene=18#wechat_redirect";}, 1500); 
+            });
+            WeixinJSBridge.on('menu:share:timeline', function(argv){              
+                WeixinJSBridge.invoke('shareTimeline', {
+                    "appid": dataForWeixin.appId,
+                    "img_url":dataForWeixin.TLImg,
+                    "img_width": "300",
+                    "img_height": "300",
+                    "link": dataForWeixin.url + '?f=wx_pyq_bb',
+                    "title": dataForWeixin.title,
+                    "desc": dataForWeixin.desc
+                });
+                share_callback_pyq();
+		setTimeout(function () {location.href ="http://mp.weixin.qq.com/s?__biz=MzIzNjE0MjQzNg==&mid=402606688&idx=1&sn=cce9047a66682d9b8c07ac22644e4f3a&scene=18#wechat_redirect";}, 1500);  
+            });
+        };
+        if(document.addEventListener){
+            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        }else if(document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+        }  
+      </script>
+      <style type="text/css">
+        body{
+
+          background: #000;
+
+          background: url("wxbg.jpg") no-repeat;
+          background-size: cover;
+          margin: 0 auto;
+          padding: 20px 10px;
+          height: 100%;
+          min-height: 500px;
+      }
+	  a{ 
+	  text-decoration:none;
+	  color:#fff;
+	  }
+
+      .title{
+          margin: 0 auto;
+          width: 80%;
+      }
+
+      .title h2{
+        background: #F2941B;
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        font-size: 20px;
+        font-weight: normal;
+          margin-bottom: 0;
+      }
+
+      .title-sub{
+          padding: 10px 20px;
+          color: #fff;
+          text-align: left;
+          /*border: 1px solid #b374b1;*/
+          border-top: 0;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          margin: 0 auto;
+          background: rgba(231, 231, 231, 0.2) none repeat scroll 0 0 !important;
+          background: #e7e7e7;
+          filter:Alpha(opacity=20);
+      }
+
+      .question{
+          width: 80%;
+          margin: 0 auto;
+          margin-top: 50px;
+          display: none;
+      }
+
+      .question-title{
+          text-align: center;
+          color: #fff;
+      }
+
+      .question:first-child, .question.current{
+          display: block;
+      }
+      .result{
+          display:none;
+      }
+
+      .options ul{
+          padding: 0;
+      }
+      .options li{
+          margin: 20px 0;
+          padding: 5px 15px;
+          list-style-type: none;
+      }
+
+      .options li div{
+          padding-left: 20px;
+      }
+      .options.button li{
+          border: 1px solid #CB8A54;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          width: 100%;
+          color: white;
+          background:rgba(236, 147, 82, 0.6) none repeat scroll 0 0 !important;
+
+          background:#8e63a7;
+          filter:Alpha(opacity=60);
+      }
+
+      .options.button li{
+          padding: 5px 0;
+      }
+
+      .options li.selected{
+          background: #cf6271 !important;
+      }
+      .prev{
+          margin-top: 30px;
+          font-weight: 300;
+          font-size: 12px;
+          float: right;
+          padding-bottom: 50px;
+      }
+      .prev a:link{
+          color: #fff;
+      }
+
+      .tools-button{
+          padding: 10px 0;
+          color: #fff;
+          text-align: center;
+          margin: 0 auto;
+          width: 80%;
+          background:rgba(159, 66, 61, 0.3) none repeat scroll 0 0;
+          background: #9f423d;
+          filter:Alpha(opacity=30);
+
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+
+          margin-top: 30px;
+
+      }
+
+      .share{
+          background:rgba(49, 126, 172, 0.6) none repeat scroll 0 0;
+          background: #317eac;
+          filter:Alpha(opacity=60);
+      }
+            #tip {
+                display: none;
+                position: absolute;
+                top: 10px;
+                left: 10px;
+            }
+			
+		.weixinimg{
+			   display:none;
+		}	
+   #mask {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: none;
+                background-color: #333;
+                filter: alpha(Opacity=90);
+                -moz-opacity: 0.9;
+                opacity: 0.9;
+            }
+      </style>
+    </head>
+    <body>
+
+
+
+ <link rel="stylesheet" href="http://1251008728.cdn.myqcloud.com/1251008728/assets/css/flexslider.css" type="text/css" media="screen" />
+  <!-- FlexSlider -->
+   <script src="http://1251008728.cdn.myqcloud.com/1251008728/assets/javascripts/jquery.flexslider.js"></script>
+
+   <div class="weixinimg">
+     <img src="http://admin2.yaoliwang.com/weixin/logo1.jpg">
+   </div>
+
+<div class="title header-title">
+  <h2>
+    大家一起来找表~~
+  </h2>
+  <div class="title-sub">
+    <p>心机Boy横行，绿茶婊泛滥的年代</p>
+  </div>
+</div>
+
+
+
+
+
+ 
+    <div class="question question-1 current">
+      <div class="question-title">
+          生日，婚礼……，免不了花钱。
+      </div>
+      <div class="options button">
+        <ul>
+          
+          
+          
+            
+              <li data-score="3">
+                  <div>
+                  A、你不想在这类场合出现，以免花钱买礼物; 
+                  </div>
+               </li>
+            
+            
+              <li data-score="2">
+                  <div>
+                  B、尽管不少花钱，可在各种场合，你还是乐于选择小巧而特别的礼物;
+                  </div>
+               </li>
+            
+              <li data-score="3">
+                  <div>
+                  C、只在对你很重要的场合送礼;
+                  </div>
+               </li>
+
+          
+        </ul>
+      </div>
+
+    </div>
+ 
+    <div class="question question-2 ">
+      <div class="question-title">
+          　你的自行车与别人的车相撞，你不得不与对方约个时间解决这个问题。
+      </div>
+      <div class="options button">
+        <ul>
+          
+          
+          
+            
+              <li data-score="3">
+                  <div>
+                  A、这件事引起的焦虑和不安使你失眠;
+                  </div>
+               </li>
+            
+            
+              <li data-score="4">
+                  <div>
+                  B、这并非重要的事情，只是生活中发生的许多事情中的一件，你会在问题解决后，做点自己喜欢的事情，以便尽快忘掉那不愉快的事;
+                  </div>
+               </li>
+            
+          <li data-score="4">
+                  <div>
+                  C、开始时你不去管它，只要在解决问题的那一天到来时再想办法应付它;
+                  </div>
+               </li>
+          
+        </ul>
+      </div>
+
+    </div>
+ 
+    <div class="question question-3 ">
+      <div class="question-title">
+         你的家具或电器由于水管破裂被损坏了，而且发现你的财产保险不能完全弥补损失。
+      </div>
+      <div class="options button">
+        <ul>
+          
+          
+          
+            
+              <li data-score="5">
+                  <div>
+                  A、你很失望，痛苦地抱怨保险公司;
+                  </div>
+               </li>
+            
+            
+              <li data-score="4">
+                  <div>
+                  B、开始自己修复家具;
+                  </div>
+               </li>
+            
+            <li data-score="5">
+                  <div>
+                  C、考虑撤销保险，并向有关事务机关投诉;
+                  </div>
+               </li>
+
+          
+        </ul>
+      </div>
+
+    </div>
+ 
+    <div class="question question-4 ">
+      <div class="question-title">
+         你由于某件生活中的小事和邻居发生了争执，却没能解决任何问题。
+      </div>
+      <div class="options button">
+        <ul>
+          
+          
+          
+            
+              <li data-score="5">
+                  <div>
+                  A、回到家，你拼命喝酒，想轻松一下，忘掉这件事;
+                  </div>
+               </li>
+            
+            
+              <li data-score="7">
+                  <div>
+                  B、准备到对方单位告他;
+                  </div>
+               </li>
+            
+            <li data-score="6">
+                  <div>
+                  C、通过散步或看一场电影来平息怒气;
+                  </div>
+               </li>
+
+          
+        </ul>
+      </div>
+
+    </div>
+ 
+    <div class="question question-5 ">
+      <div class="question-title">
+          当今日常生活中的压力使你和你妻子(或丈夫)经常发生口角。
+      </div>
+      <div class="options button">
+        <ul>
+          
+          
+          
+            
+              <li data-score="6">
+                  <div>
+                  A、每当这个时候，你尽力放松自己，保持沉默，不去争执;
+                  </div>
+               </li>
+            
+            
+              <li data-score="6">
+                  <div>
+                  B、你和朋友谈论这事，使你的观点和感情得到理解;
+                  </div>
+               </li>
+            
+             <li data-score="7">
+                  <div>
+                  C、寻求机会，心平气和地与自己的妻子(或丈夫)谈心，看如何摆脱由于日常生活压力而引起的争吵;
+                  </div>
+               </li>
+
+          
+        </ul>
+      </div>
+
+    </div>
+ 
+    <div class="question question-6 ">
+      <div class="question-title">
+          一个你所爱的亲密朋友准备与别人结婚了，对你来说这是个巨大的不幸。
+      </div>
+      <div class="options button">
+        <ul>
+          
+          
+          
+            
+              <li data-score="7">
+                  <div>
+                  A、你逃避现实，使用自己相信这不可能发生，因此没必要担心，于是仍然乐观地抱希望;
+                  </div>
+               </li>
+            
+            
+              <li data-score="8">
+                  <div>
+                  B、决定不去担忧，因为还有时间去改变这个“事实”;
+                  </div>
+               </li>
+            
+			 <li data-score="8">
+                  <div>
+                  C、决定向你所爱的人提出你的观点，表明你的态度，严肃地向她(他)说明不该这样的理由;
+                  </div>
+               </li>
+            
+
+          
+        </ul>
+      </div>
+
+    </div>
+ 
+    <div class="question question-7 ">
+      <div class="question-title">
+          每个人都承受物价上涨所带来的心理上和生活上的压力，你更担心食品价格上涨。
+      </div>
+      <div class="options button">
+        <ul>
+          
+          
+          
+            
+              <li data-score="9">
+                  <div>
+                  A、尽管价格上涨，你仍拒绝改变饮食习惯，因此不得不花更多的钱;
+                  </div>
+               </li>
+            
+            
+              <li data-score="9">
+                  <div>
+                  B、每看到物价上涨，你怒气会大增，但不管怎么样还要买，甚至拼命抢购，担心还会再涨;
+                  </div>
+               </li>
+            
+             <li data-score="8">
+                  <div>
+                  C、设法少花钱，制定出一个营养而又实惠的信食谱;
+                  </div>
+               </li>
+
+          
+        </ul>
+      </div>
+
+    </div>
+ 
+    <div class="question question-8 ">
+      <div class="question-title">
+          终于有一天你的能力被人们认识并被赋予一项重要工作。
+      </div>
+      <div class="options button">
+        <ul>
+          
+          
+          
+            
+              <li data-score="9">
+                  <div>
+                  A、你考虑放弃这次机会，因为工作量太大;
+                  </div>
+               </li>
+            
+            
+              <li data-score="9">
+                  <div>
+                  B、你开始怀疑自己能否承担这个重任;
+                  </div>
+               </li>
+            
+            
+              <li data-score="10">
+                  <div>
+                  C、分析这项工作对你的要求，并为从事这一工作做各方面的准备;
+                  </div>
+               </li>
+            
+            
+
+          
+        </ul>
+      </div>
+
+    </div>
+ 
+    <div class="question question-9 ">
+      <div class="question-title">
+          你猜想你的房租或一些其它的月支付会增加。 
+      </div>
+      <div class="options button">
+        <ul>
+          
+          
+          
+            
+              <li data-score="11">
+                  <div>
+                  A、每天急于收信，以便从朋友那里早点确认上涨的信息，只有没信时才有所放松;
+                  </div>
+               </li>
+            
+            
+              <li data-score="10">
+                  <div>
+                  B、决定不被这次涨价吓倒，你计划怎么样应付这种情况，如换房、采取节约措施等; 
+                  </div>
+               </li>
+            
+            
+              <li data-score="11">
+                  <div>
+                  C、你觉得每个人都处在同样的状态中，因此逃避现实，被动等待，认为自己总会应付得了; 
+                  </div>
+               </li>
+            
+            
+
+          
+        </ul>
+      </div>
+
+    </div>
+ 
+    <div class="question question-10 ">
+      <div class="question-title">
+          你的一个非常亲近的人在一场事故中受了重伤，你从电话里得到了这个消息。
+      </div>
+      <div class="options button">
+        <ul>
+          
+          
+          
+            
+              <li data-score="200">
+                  <div>
+                  A、努力压抑自己的感情，因为你还要把这一消息告诉其它朋友和亲戚; 
+                  </div>
+               </li>
+            
+            
+              <li data-score="200">
+                  <div>
+                  B、你挂断电话，哭起来，让悲痛尽情发泄出来，使心里好受一些;
+                  </div>
+               </li>
+            
+            
+              <li data-score="11">
+                  <div>
+                  C、去医务室向医生要一些镇静剂，帮助你度过以后几小时;
+                  </div>
+               </li>
+            
+            
+
+          
+        </ul>
+      </div>
+
+    </div>
+ 
+    <div class="question question-11 ">
+      <div class="question-title">
+          　每个节假日，家里总为去探望双方的父母而发生激烈争吵。
+      </div>
+      <div class="options button">
+        <ul>
+          
+          
+          
+            
+              <li data-score="12">
+                  <div>
+                  A、你制定了一个严格的5年计划，要求在节假日轮流探望双方父母;
+                  </div>
+               </li>
+            
+            
+              <li data-score="300">
+                  <div>
+                  B、决定在重要的假期与自己最喜欢的家庭成员一起度过，而在不太重要的假期邀请其他人;
+                  </div>
+               </li>
+            
+            
+              <li data-score="400">
+                  <div>
+                  C、决定做最“公平”的事，根本不与家里老人、亲戚一起度假，这样麻烦最少;
+                  </div>
+               </li>
+            
+            
+
+          
+        </ul>
+      </div>
+
+    </div>
+ 
+    <div class="question question-12 ">
+      <div class="question-title">
+         有一天你突然感觉不舒服。
+      </div>
+      <div class="options button">
+        <ul>
+          
+          
+          
+            
+              <li data-score="300">
+                  <div>
+                  A、读一些有庆医学的书，进行自我诊断，自我治疗;
+                  </div>
+               </li>
+            
+            
+              <li data-score="200">
+                  <div>
+                  B、鼓起勇气，告诉家里人，并去医院看病，希望得到医生帮助;
+                  </div>
+               </li>
+            
+            
+              <li data-score="400">
+                  <div>
+                  C、拖着不去看病，认为自己最终会好起来;
+                  </div>
+               </li>
+            
+            
+
+          
+        </ul>
+      </div>
+
+    </div>
+ 
+
+
+		  
+<div class="result result-100">
+            <div class="title">
+              <h2>
+                结果
+              </h2>
+              <div class="title-sub aside">
+                  A、恭喜您，您的心理状况非常健康，您能够应付生活中的许多事情，虽然有时也会有些烦恼，但您都可以从容的解决，您像风一样的自由，不被烦恼所束缚，请继续保持。
+              </div>
+            </div>
+
+            <div class="share tools-button" onclick="mask();">
+              分享
+            </div>
+
+            <div class="follow-us tools-button" id="share1">
+              <a href="http://mp.weixin.qq.com/s?__biz=MzIzNjE0MjQzNg==&mid=402606688&idx=1&sn=cce9047a66682d9b8c07ac22644e4f3a&scene=18#wechat_redirect">关注爱吐槽的小表砸</a>
+            </div>
+
+
+
+          </div>
+
+
+<div class="result result-200">
+            <div class="title">
+              <h2>
+                结果
+              </h2>
+              <div class="title-sub aside">
+                　B、您有轻度的心理压力，虽然常会体验到不必要的烦恼，但您基本能处理生活中的问题。您也会意识到烦恼无处不在，学会调节自己的心情才是正途，朗术国际医疗希望您能继续保持轻松愉快的心境。
+              </div>
+            </div>
+
+            <div class="share tools-button" onclick="mask();">
+              分享
+            </div>
+
+            <div class="follow-us tools-button" id="share1">
+              <a href="http://mp.weixin.qq.com/s?__biz=MzIzNjE0MjQzNg==&mid=402606688&idx=1&sn=cce9047a66682d9b8c07ac22644e4f3a&scene=18#wechat_redirect">关注爱吐槽的小表砸</a>
+            </div>
+
+
+
+          </div>
+
+<div class="result result-300">
+            <div class="title">
+              <h2>
+                结果
+              </h2>
+              <div class="title-sub aside">
+                C、您的心理压力已经积累了不少，想必您是一个十分认真的人，事事追求完美，但也请记住人力也有不可为之的时候，朗术国际医疗建议您调整好自己的心态，将会对您的身体健康大有裨益。
+
+              </div>
+            </div>
+
+            <div class="share tools-button" onclick="mask();">
+              分享
+            </div>
+
+            <div class="follow-us tools-button" id="share1">
+               <a href="http://mp.weixin.qq.com/s?__biz=MzIzNjE0MjQzNg==&mid=402606688&idx=1&sn=cce9047a66682d9b8c07ac22644e4f3a&scene=18#wechat_redirect">关注爱吐槽的小表砸</a>
+            </div>
+
+
+
+          </div>
+
+<div class="result result-400">
+            <div class="title">
+              <h2>
+                结果
+              </h2>
+              <div class="title-sub aside">
+               D、您已经在承受巨大的心理压力，您不能处理生活中的许多问题，因此使您紧张、不安、影响到您的身心健康。您应尽快改变这种情况，否则将使您的生活不能正常进行。请记住，心理健康与身体健康是同样重要的，良好的心境才是保持身体健康的根本。如果您有任何需要，可以咨询朗术国际医疗，希望您可以尽快走出心理的阴霾，外面阳光正好。
+
+              </div>
+            </div>
+
+            <div class="share tools-button" onclick="mask();">
+              分享
+            </div>
+
+            <div class="follow-us tools-button" id="share1">
+               <a href="http://mp.weixin.qq.com/s?__biz=MzIzNjE0MjQzNg==&mid=402606688&idx=1&sn=cce9047a66682d9b8c07ac22644e4f3a&scene=18#wechat_redirect">关注爱吐槽的小表砸</a>
+            </div>
+
+
+
+          </div>
+
+
+
+          </div>
+
+
+       <div id="mask" onclick="mask();"></div>
+       <div id="tip"  onclick="mask();"><img  style="width:320px;" src="http://www.lanrenmb.com/wap/126/img/guide.png"/>
+       </div>
+<br/>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 手机网站适应性广告代码 -->
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</html>
+

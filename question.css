@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+
+.content{
+	color:#FFFFFF;
+	padding-bottom:0px;
+	border-bottom:solid #Fff;
+	border-top:solid #FFF}
+.question{
+	alignment-adjust:central;
+	}
+.optiont{
+	alignment-adjust:central;
+	text-align:center;
+	margin:0 auto;
+	background-color:#666;
+	}
+.option{
+	alignment-adjust:central;
+	text-align:center;
+	margin:0 auto;
+	margin-bottom:10px;
+}
+.option:hover{
+	background-color:#00F;
+	cursor:pointer}
+.title{
+	font-size:25px;
+	text-decoration:underline;
+	alignment-adjust:central;
+	text-align:center;
+	margin:0 auto;
+	margin-bottom:20px;
+	padding-top:40px;
+	padding-bottom:40px;
+	color:#3CF}
+.vivi{
+	display:none}

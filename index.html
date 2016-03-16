@@ -1,0 +1,57 @@
+﻿ <!DOCTYPE html>
+<html>
+<head>
+<title>“国家鉴表中心”</title>
+<meta charset="utf-8">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="jquery-1.12.0.min.js">
+</script>
+<link rel="stylesheet" type="text/css" href="question.css">
+<script>
+$(document).ready(function(){
+ $("#question1-1").click(function(){
+    $("#question1").hide("slow");
+	$("#question2").show("slow");});
+$("#question2-1").click(function(){
+    $("#question1").hide("slow");
+	$("#question2").show("slow");});
+$("#question2-1").click(function(){
+    $("#question2").hide("slow");
+	$("#question3").show("slow");});
+});
+</script>
+</head>
+<body bgcolor="#000000">
+<!-- 隐藏的 div 微信分享缩略图 -->
+<div style="display: none;"
+　　document.getElementById("typediv1").style.display="none";>
+<img src="/logo.png" height="69px">
+</div>
+<div class="content">
+<div id="question1">
+<div class="title">你是男孩还是女孩？</div>
+<div class="optiont">
+<div id="question1-1" class="option">男孩</div>
+<div id="question1-2" class="option">女孩</div>
+<div id="question1-3" class="option">kid</div>
+</div>
+</div>
+<div id="question2" class="vivi">
+<div class="title">你喜欢旅行吗？ </div>
+<div class="optiont">
+<div id="question2-1" class="option">一个人</div>
+<div id="question2-2" class="option">旅游团</div>
+<div id="question2-3" class="option">和男友或者女友双人游</div>
+</div>
+</div>
+<div id="question3" class="vivi">
+<div class="title">你单身吗？ </div>
+<div class="optiont">
+<div id="question2-1" class="option">单身汪</div>
+<div id="question2-2" class="option">恨嫁女</div>
+<div id="question2-3" class="option">恋爱中</div>
+</div>
+</div>
+<img src="logo.png" width="59" height="69" alt="gossip girl"></div>
+</body>
+</html>
